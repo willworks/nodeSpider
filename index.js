@@ -1,10 +1,18 @@
+/** 
+    Document   : nodeSpider
+    Created on : 2015.9
+    Author     : Kevin Zhong
+    License    : MIT
+    github     : https://github.com/willworks/nodeSpider/ 
+    Description: node爬虫，实现自动抓取stackoverflow问答
+    Copyright (c) 2015 Kevin Zhong
+*/
 // node http模块引入
 var http = require("http"),
 // 在服务端使用jQuery..
     cheerio = require("cheerio"),
-
     // 访问请求配置
-    options = {  
+    reqGet = {  
         host: 'stackoverflow.com',
         path: '/',
         method: 'GET',
@@ -16,7 +24,7 @@ var http = require("http"),
 
 // 发起请求
 // PS:node属于C/S通讯，不是B/S，故这种请求，可以跨域
-var req = http.request(options, function(res){
+var req = http.request(reqGet, function(res){
     // 设置显示编码
     res.setEncoding("utf8");
     // chunk指的是服务器数据的返回是一段一段的，这个和TCP滑动窗口协议有关，需要使用data串接起来，参照buffer
