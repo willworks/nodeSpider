@@ -39,5 +39,5 @@ var req = http.request(options, function(res){
     });
 });
 
-// 发送请求
+// 结束请求
 req.end();
