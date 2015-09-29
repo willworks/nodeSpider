@@ -10,6 +10,12 @@
     "type": "git",
     "url": "git+https://github.com/willworks/nodeSpider.git"
   },
+  "keywords": [
+    "node",
+    "superagent",
+    "cheerio",
+    "Spider"
+  ],
   "author": "kevin.zhong",
   "license": "MIT",
   "bugs": {
