@@ -1,9 +1,11 @@
 // node http模块引入
 var http = require("http"),
+// 在服务端使用jQuery..
+    cheerio = require("cheerio"),
 
     // 访问请求配置
     options = {  
-        host: 'www.bepotato.com',
+        host: 'stackoverflow.com',
         path: '/',
         method: 'GET',
         headers: {
@@ -23,7 +25,17 @@ var req = http.request(options, function(res){
     });
     // 响应完毕时间出发，输出返回的全部内容
     res.on('end', function(){
-        console.log(data);
+        var $ = cheerio.load(data);
+        var items = [];
+        $('#question-mini-list .question-summary').each(function (idx, element) {
+            var $element = $(element).find('.summary').children().eq(0).find('a');
+            //console.log($element.attr('href'));
+            items.push({
+                title: $element.attr('title'),
+                href: $element.attr('href')
+            });
+        });
+        console.log(items);
     });
 });
 
